@@ -2,7 +2,7 @@
 into native Python data types that can be easily rendered into JSON, XML, or other content types. '''
 
 from rest_framework import serializers
-from api.models import Company
+from api.models import Company, Employee
 
 #create serualizer here
 class CompanySerializer(serializers.HyperlinkedModelSerializer): #defines a serializer in the Django REST Framework (DRF) named CompanySerializer
@@ -11,3 +11,8 @@ class CompanySerializer(serializers.HyperlinkedModelSerializer): #defines a seri
         model=Company #This line tells the serializer which Django model it should be associated with. In this case, it's the Company model. The serializer will automatically inspect this model to determine the fields it needs to serialize and deserialize.
         fields="__all__" #This is a shortcut to include every field from the Company model in the serializer. The serializer will automatically generate corresponding fields for all of the model's fields, including any relationships.
 
+class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
+    id=serializers.ReadOnlyField()
+    class Meta:
+        model = Employee
+        fields="__all__"
