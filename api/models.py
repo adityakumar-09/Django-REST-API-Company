@@ -30,4 +30,4 @@ class Employee(models.Model):
         ('Software Developer','sd'),
         ('Backend Developer','BD')
     ))
-    Company = models.ForeignKey(Company, on_delete=models.CASCADE)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE)
